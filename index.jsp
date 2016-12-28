@@ -12,7 +12,7 @@
 <script>
 	function resizeIframe(obj) {
 		obj.style.height = ((window.innerHeight / 100) * 93) + 'px';
-	}
+	}sadasda
 </script>
 </head>
 
