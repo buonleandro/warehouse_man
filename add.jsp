@@ -24,10 +24,11 @@
 					<img src="images/ImgResponsive_Placeholder.png" alt="Miniatura">
 					<div class="caption">
 						<center>
-							<form method="post" action="UploadImage"
+							<form method="POST" action="UploadImage"
 								enctype="multipart/form-data">
-								Seleziona immagine da caricare: <input type="file" name="img"
-									size="20" /> <input type="submit" value="Upload" />
+								Seleziona immagine da caricare: <input type="file" name="file"
+									size="60" /> <input type="submit" value="Upload" />
+								<%if (session.getAttribute("file")!=null){ %><label>Upload completato</label><% } %>
 							</form>
 						</center>
 					</div>
