@@ -32,6 +32,7 @@ public class AggiungiProdotto extends HttpServlet {
 		String img = (String) session.getAttribute("file");
 		int pezzi = Integer.parseInt(request.getParameter("pezzi"));
 		db.aggiungiProdotto(sn, nome, tipo, marca, prezzo, desb, desl, pezzi, img);
+		session.setAttribute("file", null);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

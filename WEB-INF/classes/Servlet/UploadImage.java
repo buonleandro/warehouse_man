@@ -27,7 +27,6 @@ public class UploadImage extends HttpServlet {
     	HttpSession session = request.getSession();
         String appPath = request.getServletContext().getRealPath("");
         String savePath = appPath + File.separator + SAVE_DIR;
-        System.out.println(savePath);
         File fileSaveDir = new File(savePath);
         if (!fileSaveDir.exists()) {
             fileSaveDir.mkdir();
@@ -38,9 +37,9 @@ public class UploadImage extends HttpServlet {
             part.write(savePath + File.separator + fileName);
             this.fileName="uploadFiles/"+fileName;
         }
-        
 
         session.setAttribute("file", fileName);
+        System.out.println(fileName);
         response.sendRedirect("add.jsp");
         
     }

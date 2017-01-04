@@ -3,20 +3,20 @@ package utils;
 public class Prodotto {
 	
 	String nome, SN, imglnk, tipo, marca, db, dl, lnk; 
-	float prezzo; 
+	double prezzo; 
 	int num;
 	
-	public Prodotto(String nome, String SN, String imglnk, float prezzo, String tipo, String marca, String db, String dl, String lnk, int num){
-		nome = this.nome;
-		SN = this.SN;
-		imglnk = this.imglnk;
-		prezzo = this.prezzo;
-		tipo = this.tipo;
-		marca = this.marca;
-		db = this.db;
-		dl = this.dl;
-		lnk = this.lnk;
-		num = this.num;
+	public Prodotto(String nome, String SN, String imglnk, double prezzo, String tipo, String marca, String db, String dl, String lnk, int num){
+		this.nome = nome;
+		this.SN = SN;
+		this.imglnk = imglnk;
+		this.prezzo = prezzo;
+		this.tipo = tipo;
+		this.marca = marca;
+		this.db = db;
+		this.dl = dl;
+		this.lnk = lnk;
+		this.num = num;
 	}
 	
 	public String getNome() {
@@ -83,12 +83,20 @@ public class Prodotto {
 		this.lnk = lnk;
 	}
 
-	public float getPrezzo() {
+	public double getPrezzo() {
 		return prezzo;
 	}
 
-	public void setPrezzo(float prezzo) {
+	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
+	}
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
 	}
 
 }
