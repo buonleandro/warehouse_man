@@ -18,6 +18,7 @@
 <script>
 	function iframechange(i) {
 		if (i==1) { document.getElementById("ifr").setAttribute('src', "./add.jsp"); }
+		if (i==2) { document.getElementById("ifr").setAttribute('src', "./mod.jsp"); }
 	}
 </script>
 </head>
@@ -28,7 +29,7 @@
 <section class="col-sm-5"> <img src="./images/trasparentone.png" width="13559" height="8000" class="img-responsive">
   <ul class="list">
     <li class="primo" onclick="iframechange(1)">AGGIUNGI</li>
-    <li> MODIFICA</li>
+    <li onclick="iframechange(2)">MODIFICA</li>
     <li class="ult">RESOCONTO INCASSI</li>
   </ul>
 &nbsp;</section>

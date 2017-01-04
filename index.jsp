@@ -37,9 +37,8 @@
 		</ul>
 		&nbsp; </section>
 		<iframe
-			style="color: #FFFFFF; font-size: 16px; border-style: none; background-color: white"
-			onload="resizeIframe(this)"> </iframe>
+			style="color: #FFFFFF; font-size: 16px; border-style: none; background-color: white" 
+			onload="resizeIframe(this)" src="elenco.jsp"> </iframe>
 	</div>
 </body>
-
 </html>
