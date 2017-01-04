@@ -1,6 +1,9 @@
 package Servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import utils.DBProdotti;
+import utils.Prodotto;
 
 @WebServlet("/InDB")
 public class InDB extends HttpServlet {
@@ -19,6 +23,19 @@ public class InDB extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		List<Prodotto> prods = db.showAll();
+		
+		PrintWriter out = response.getWriter();
+
+		out.print("<TABLE ALIGN='CENTER'>");
+		for(Prodotto p: prods) {
+			out.print("<TR ALIGN='CENTER' PADDING-BOTTOM='10px'>"+
+			" <TD PADDING-RIGHT='10px'><IMG SRC="+p.getImglnk()+" STYLE='HEIGHT: 100px'></IMG></TD>"+
+			" <TD><H3><A HREF=page.jsp"+p.getLnk()+">"+p.getNome()+"</A></H3></TD>"+
+			"</TR>");
+		}
+		out.print("</TABLE>");
 		
 	}
 
