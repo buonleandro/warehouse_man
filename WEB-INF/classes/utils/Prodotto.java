@@ -4,9 +4,10 @@ public class Prodotto {
 	
 	String nome, SN, imglnk, tipo, marca, db, dl, lnk; 
 	double prezzo; 
-	int num;
+	int num, id;
 	
-	public Prodotto(String nome, String SN, String imglnk, double prezzo, String tipo, String marca, String db, String dl, String lnk, int num){
+	public Prodotto(int id, String nome, String SN, String imglnk, double prezzo, String tipo, String marca, String db, String dl, String lnk, int num){
+		this.id = id;
 		this.nome = nome;
 		this.SN = SN;
 		this.imglnk = imglnk;
@@ -19,6 +20,14 @@ public class Prodotto {
 		this.num = num;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getNome() {
 		return nome;
 	}
