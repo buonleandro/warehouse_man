@@ -19,6 +19,21 @@
 	</header>
 	<div class="container-fluid">
 		<div class="row">
+			<div>
+			  <div class="thumbnail">
+					<img alt="ATTENZIONE" src="images/^25B261F7DE3BA212F6505F4E32392692B39B8EC8984D62E916^pimgpsh_fullsize_distr.png">
+				<div class="caption">
+				  <center>
+					<form method="POST" action="UploadImage"
+								enctype="multipart/form-data">
+								Seleziona immagine da caricare: <input type="file" name="file"
+									size="60" /> <input type="submit" value="Upload" />
+								<%
+									if (session.getAttribute("file") != null) {
+								%><label>Upload completato</label>
+								<%
+									}
+								%>
 			<div class="col-md-4 col-sm-6">
 				<div class="thumbnail">
 					<img src="images/ImgResponsive_Placeholder.png" alt="Miniatura">
@@ -34,6 +49,41 @@
 					</div>
 				</div>
 			</div>
+			<form class="col-sm-12" action="AggiungiProdotto" method="GET"
+				enctype="multipart/form-data">
+				<center class="campi">
+				  <span spellcheck="col-xs-12"><span style="font-weight: bold">Numero Seriale:</span><br>
+				    <input
+						type="text" name="SN" size="60" required="">
+				    <br>
+				    <span
+						style="font-weight: bold">Nome prodotto:</span><br>
+				    <input
+						type="text" name="nomeprod" size="40" required="">
+				    <br>
+				    <span style="font-weight: bold">Categoria:</span><br>
+				    <select
+						name="categoria">
+				      <option>TV</option>
+				      <option>COMPUTER & TABLET</option>
+				      <option>TELEFONIA & SMARTPHONE</option>
+				      <option>ELETTRODOMESTICI</option>
+				      <option>FOTOCAMERE</option>
+				      <option>CONSOLE</option>
+			      </select>
+				    <br>
+				    <span style="font-weight: bold">Marca:</span><br>
+				    <input
+						type="text" name="marca" size="40" required="">
+				    <br>
+				    <span
+						style="font-weight: bold">Prezzo:</span><br>
+				    <input
+						type="text" name="prezzo" size="10" value="0.0" required="">
+				    <br>
+			      </span>
+			  </center>
+				<div>
 			<form class="col-sm-12" action="AggiungiProdotto" method="GET" enctype="multipart/form-data">
 				<div class="col-md-4 col-sm-6">
 					<center>
@@ -42,6 +92,25 @@
 							required=""><br>
 					</center>
 				</div>
+<br><br><br>
+                <center>
+				<span class="desb" style="font-weight: bold">Descrizione breve:</span><br>
+				<textarea name="desb" cols="100" rows="4"
+					required="" class="desb" style="resize: none"></textarea>
+				<br> <br> <span style="font-weight: bold">Descrizione
+					lunga:</span><br>
+				<textarea name="desl" rows="4" cols="100" style="resize: none"
+					required=""></textarea>
+				<br> <br>
+                </center>
+				<center>
+					<button style="background-color: white; border: none" type="submit">
+						<img src="images/piu.png" alt="Aggiungi" width="150" height="149" />
+					</button>
+				</center>
+				<br> <br>
+		  </form>
+		</div>
 		</div>
 		<center class="campi">
 			<span style="font-weight: bold">Numero Seriale:</span><br> <input
