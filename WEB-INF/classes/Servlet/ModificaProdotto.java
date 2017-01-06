@@ -1,7 +1,6 @@
 package Servlet;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,12 +10,12 @@ import javax.servlet.http.HttpSession;
 
 import utils.DBProdotti;
 
-@WebServlet("/AggiungiProdotto")
-public class AggiungiProdotto extends HttpServlet {
+@WebServlet("/ModificaProdotto")
+public class ModificaProdotto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DBProdotti db = new DBProdotti();
 
-    public AggiungiProdotto() {
+    public ModificaProdotto() {
         super();
     }
 
@@ -29,15 +28,11 @@ public class AggiungiProdotto extends HttpServlet {
 		double prezzo = Double.parseDouble(request.getParameter("prezzo"));
 		String desb = request.getParameter("desb");
 		String desl = request.getParameter("desl");
-		//System.out.println(desb);
-		String img = (String) session.getAttribute("file");
 		int pezzi = Integer.parseInt(request.getParameter("pezzi"));
-		db.aggiungiProdotto(sn, nome, tipo, marca, prezzo, desb, desl, pezzi, img);
-		session.setAttribute("file", null);
+		db.aggiornaProdotto(id, nome, sn, tipo, marca, desb, desl, pezzi, prezzo);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }
