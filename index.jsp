@@ -14,7 +14,6 @@
 		obj.style.height = ((window.innerHeight / 100) * 93) + 'px';
 	}
 </script>
-<jsp:include page="InDB"></jsp:include>
 </head>
 
 <body style="background-color: #E1E1E1">
