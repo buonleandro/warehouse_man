@@ -1,5 +1,6 @@
 package utils;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -204,45 +205,45 @@ public class DBProdotti {
 		ResultSet queryResult = statement.executeQuery(query);
 		queryResult.next();
 		String template =
-				String.format("UPDATE %s SET nome ="+(nome)+"WHERE id ="+id,
+				String.format("UPDATE %s SET nome ='"+(nome)+"' WHERE id ="+id,
 						tableName);
 		statement.executeUpdate(template);
 		String template2 =
-				String.format("UPDATE %s SET SN ="+(SN)+"WHERE id ="+id,
+				String.format("UPDATE %s SET SN ='"+(SN)+"' WHERE id ="+id,
 						tableName);
 		statement.executeUpdate(template2);
 		String template3 =
-				String.format("UPDATE %s SET tipo ="+(tipo)+"WHERE id ="+id,
+				String.format("UPDATE %s SET tipo ='"+(tipo)+"' WHERE id ="+id,
 						tableName);
 		statement.executeUpdate(template3);
 		String template4 =
-				String.format("UPDATE %s SET marca ="+(marca)+"WHERE id ="+id,
+				String.format("UPDATE %s SET marca ='"+(marca)+"' WHERE id ="+id,
 						tableName);
 		statement.executeUpdate(template4);
 		String template5 =
-				String.format("UPDATE %s SET db ="+(db)+"WHERE id ="+id,
+				String.format("UPDATE %s SET db ='"+(db)+"' WHERE id ="+id,
 						tableName);
 		statement.executeUpdate(template5);
 		String template6 =
-				String.format("UPDATE %s SET dl ="+(dl)+"WHERE id ="+id,
+				String.format("UPDATE %s SET dl ='"+(dl)+"' WHERE id ="+id,
 						tableName);
 		statement.executeUpdate(template6);
 		String template7 =
-				String.format("UPDATE %s SET num ="+(num)+"WHERE id ="+id,
+				String.format("UPDATE %s SET num ="+(num)+" WHERE id ="+id,
 						tableName);
 		statement.executeUpdate(template7);
 		String template8 =
-				String.format("UPDATE %s SET lnk = ?"+(SN)+"WHERE id ="+id,
+				String.format("UPDATE %s SET lnk = '?"+(SN)+"' WHERE id ="+id,
 						tableName);
 		statement.executeUpdate(template8);
 		String template9 =
-				String.format("UPDATE %s SET prezzo ="+(prezzo)+"WHERE id ="+id,
+				String.format("UPDATE %s SET prezzo ="+(prezzo)+" WHERE id ="+id,
 						tableName);
 		statement.executeUpdate(template9);
 		connection.close();
 	}
 
-	public void rimuoviDalDB(int id) throws Exception{
+	public void rimuoviDalDB(int id, String img) throws Exception{
 		Connection connection = getConnection();
 		Statement statement2 = connection.createStatement();
 		String query =
@@ -254,6 +255,8 @@ public class DBProdotti {
 				String.format("DELETE FROM %s WHERE id ="+id,
 						tableName);
 		statement2.executeUpdate(template);
+		File f = new File(img);
+		f.delete();
 		connection.close();
 	}
 

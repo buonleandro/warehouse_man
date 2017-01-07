@@ -20,6 +20,8 @@ public class ModificaProdotto extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	try {
 		HttpSession session = request.getSession();
 		String sn = request.getParameter("SN");
 		String nome = request.getParameter("nomeprod");
@@ -29,7 +31,11 @@ public class ModificaProdotto extends HttpServlet {
 		String desb = request.getParameter("desb");
 		String desl = request.getParameter("desl");
 		int pezzi = Integer.parseInt(request.getParameter("pezzi"));
-		db.aggiornaProdotto(id, nome, sn, tipo, marca, desb, desl, pezzi, prezzo);
+		int id = (int) session.getAttribute("id");
+			db.aggiornaProdotto(id, nome, sn, tipo, marca, desb, desl, pezzi, prezzo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

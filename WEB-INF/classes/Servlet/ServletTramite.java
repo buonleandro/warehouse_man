@@ -1,5 +1,6 @@
 package Servlet;
 
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,11 +37,22 @@ public class ServletTramite extends HttpServlet {
 		session.setAttribute("num", p.getNum());
 		session.setAttribute("prez", p.getPrezzo());
 		session.setAttribute("img", p.getImglnk());
+		session.setAttribute("id", id);
 		response.sendRedirect("modcampi.jsp");
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		String img = request.getParameter("img");
+		String appPath = request.getServletContext().getRealPath("");
+		String savePath = appPath + File.separator + img;
+		try {
+			db.rimuoviDalDB(id, savePath);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
