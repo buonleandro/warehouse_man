@@ -13,10 +13,11 @@ import java.util.Properties;
 
 public class DBProdotti {
 	private String protocol = "jdbc:derby:";   
-	private String username = "userwc";
-	private String password = "passwc";
+	private String username = "user";
+	private String password = "pass";
 	private String dbName = "wcDatabase";
 	private String tableName = "prodotti";
+	private String table2Name = "utenti";
 	private Properties userInfo;
 	private int id;
 
@@ -36,8 +37,9 @@ public class DBProdotti {
 
 	public void createDatabase() {
 
-		Prodotto[] prodotti = {
-				new Prodotto(0, "a", "a", "images/trasparentone.png", 1.0, "a", "a","a","a", "?a", 1)
+		Utente[] utenti = {
+				new Utente("admin", "admin"),
+				new Utente("admin2", "admin2"),
 		};
 
 		try {
@@ -54,26 +56,29 @@ public class DBProdotti {
 							"lnkimg %s, lnk %s NOT NULL, num INT NOT NULL)",
 							tableName, format, format, format, format, format, format2, lnkimg, format);
 			statement.execute(table);
+			
+			Statement statementuser = connection.createStatement();
+			String usr = "VARCHAR(25)";
+			String pss = "VARCHAR(25)";
+			String table2 =
+					String.format
+					("CREATE TABLE %s" +
+							"(name %s, pass %s)",
+							table2Name, usr, pss);
+			statementuser.execute(table2);
 
-			String query = String.format("INSERT INTO %s VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", tableName);
-			PreparedStatement inserter =
-					connection.prepareStatement(query);
-			for(Prodotto p:prodotti){
-				inserter.setInt(1, p.getId());
-				//System.out.println(p.getId()+"Sono in createDB");
-				inserter.setString(2, p.getNome());
-				inserter.setString(3, p.getSN());
-				inserter.setDouble(4, p.getPrezzo());
-				inserter.setString(5, p.getTipo());
-				inserter.setString(6, p.getMarca());
-				inserter.setString(7, p.getDb());
-				inserter.setString(8, p.getDl());
-				inserter.setString(9, p.getImglnk());
-				inserter.setString(10, p.getLnk());
-				inserter.setInt(11, p.getNum());
-				inserter.executeUpdate();
+			String template2 =
+					String.format("INSERT INTO %s VALUES(?, ?)",
+							table2Name);
+			PreparedStatement inserter2 =
+					connection.prepareStatement(template2);
+			for(Utente e: utenti) {
+				inserter2.setString(1, e.getUser());
+				inserter2.setString(2, e.getPass());
+				inserter2.executeUpdate();
+				//System.out.println("Inserito "+e.getUser()+" "+e.getPass());
 			}
-			inserter.close();
+			inserter2.close();
 
 			connection.close();
 			System.out.println("Database creato");
@@ -258,6 +263,27 @@ public class DBProdotti {
 		File f = new File(img);
 		f.delete();
 		connection.close();
+	}
+	
+	public boolean cfrLogin(String user, String pass){
+		
+		try {
+			Connection connection = getConnection();
+			Statement statement = connection.createStatement();
+			String query = "SELECT * FROM utenti";
+			ResultSet resultSet = statement.executeQuery(query);
+			while(resultSet.next()) {
+				if(resultSet.getString("name").equals(user) && resultSet.getString("pass").equals(pass)){
+					return true;
+				}
+			}
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }
