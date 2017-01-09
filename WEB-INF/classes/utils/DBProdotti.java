@@ -158,6 +158,301 @@ public class DBProdotti {
 		}
 		return prod;
 	}
+	
+	public List<Prodotto> ricercaSn(String seriale) {
+		
+		List<Prodotto> prods = new ArrayList<Prodotto>();
+
+		try {
+			Connection connection = getConnection();
+			Statement statement = connection.createStatement();
+			String query = "SELECT * FROM prodotti WHERE SN='"+seriale+"'";
+			ResultSet resultSet = statement.executeQuery(query);
+			while(resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String nome = resultSet.getString("nome");
+				String sn = resultSet.getString("SN");
+				Double prezzo = resultSet.getDouble("prezzo");
+				String tipo = resultSet.getString("tipo");
+				String marca = resultSet.getString("marca");
+				String db = resultSet.getString("db");
+				String dl = resultSet.getString("dl");
+				String lnkimg = resultSet.getString("lnkimg");
+				int num = resultSet.getInt("num");
+				String lnk = resultSet.getString("lnk");
+				if(num!=0){
+					Prodotto prod = new Prodotto(id, nome, sn, lnkimg, prezzo, tipo, marca, db, dl, lnk, num);
+					prods.add(prod);
+				}
+			}
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return prods;
+		
+	}
+	
+	public List<Prodotto> ricerca(String name, String mc) {
+		
+		List<Prodotto> prods = new ArrayList<Prodotto>();
+
+		try {
+			Connection connection = getConnection();
+			Statement statement = connection.createStatement();
+			String query = "SELECT * FROM prodotti WHERE nome='"+name+"' AND marca='"+mc+"'";
+			ResultSet resultSet = statement.executeQuery(query);
+			while(resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String nome = resultSet.getString("nome");
+				String sn = resultSet.getString("SN");
+				Double prezzo = resultSet.getDouble("prezzo");
+				String tipo = resultSet.getString("tipo");
+				String marca = resultSet.getString("marca");
+				String db = resultSet.getString("db");
+				String dl = resultSet.getString("dl");
+				String lnkimg = resultSet.getString("lnkimg");
+				int num = resultSet.getInt("num");
+				String lnk = resultSet.getString("lnk");
+				if(num!=0){
+					Prodotto prod = new Prodotto(id, nome, sn, lnkimg, prezzo, tipo, marca, db, dl, lnk, num);
+					prod.getNome();
+					prods.add(prod);
+				}
+			}
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return prods;
+		
+	}
+	
+	public List<Prodotto> tv() {
+		
+		List<Prodotto> prods = new ArrayList<Prodotto>();
+
+		try {
+			Connection connection = getConnection();
+			Statement statement = connection.createStatement();
+			String query = "SELECT * FROM prodotti WHERE tipo='TV'";
+			ResultSet resultSet = statement.executeQuery(query);
+			while(resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String nome = resultSet.getString("nome");
+				String sn = resultSet.getString("SN");
+				Double prezzo = resultSet.getDouble("prezzo");
+				String tipo = resultSet.getString("tipo");
+				String marca = resultSet.getString("marca");
+				String db = resultSet.getString("db");
+				String dl = resultSet.getString("dl");
+				String lnkimg = resultSet.getString("lnkimg");
+				int num = resultSet.getInt("num");
+				String lnk = resultSet.getString("lnk");
+				if(num!=0){
+					Prodotto prod = new Prodotto(id, nome, sn, lnkimg, prezzo, tipo, marca, db, dl, lnk, num);
+					prod.getNome();
+					prods.add(prod);
+				}
+			}
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return prods;
+		
+	}
+	
+	public List<Prodotto> PC() {
+		
+		List<Prodotto> prods = new ArrayList<Prodotto>();
+
+		try {
+			Connection connection = getConnection();
+			Statement statement = connection.createStatement();
+			String query = "SELECT * FROM prodotti WHERE tipo='COMPUTER & TABLET'";
+			ResultSet resultSet = statement.executeQuery(query);
+			while(resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String nome = resultSet.getString("nome");
+				String sn = resultSet.getString("SN");
+				Double prezzo = resultSet.getDouble("prezzo");
+				String tipo = resultSet.getString("tipo");
+				String marca = resultSet.getString("marca");
+				String db = resultSet.getString("db");
+				String dl = resultSet.getString("dl");
+				String lnkimg = resultSet.getString("lnkimg");
+				int num = resultSet.getInt("num");
+				String lnk = resultSet.getString("lnk");
+				if(num!=0){
+					Prodotto prod = new Prodotto(id, nome, sn, lnkimg, prezzo, tipo, marca, db, dl, lnk, num);
+					prod.getNome();
+					prods.add(prod);
+				}
+			}
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return prods;
+		
+	}
+	
+	public List<Prodotto> cell() {
+		
+		List<Prodotto> prods = new ArrayList<Prodotto>();
+
+		try {
+			Connection connection = getConnection();
+			Statement statement = connection.createStatement();
+			String query = "SELECT * FROM prodotti WHERE tipo='TELEFONIA & SMARTPHONE'";
+			ResultSet resultSet = statement.executeQuery(query);
+			while(resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String nome = resultSet.getString("nome");
+				String sn = resultSet.getString("SN");
+				Double prezzo = resultSet.getDouble("prezzo");
+				String tipo = resultSet.getString("tipo");
+				String marca = resultSet.getString("marca");
+				String db = resultSet.getString("db");
+				String dl = resultSet.getString("dl");
+				String lnkimg = resultSet.getString("lnkimg");
+				int num = resultSet.getInt("num");
+				String lnk = resultSet.getString("lnk");
+				if(num!=0){
+					Prodotto prod = new Prodotto(id, nome, sn, lnkimg, prezzo, tipo, marca, db, dl, lnk, num);
+					prod.getNome();
+					prods.add(prod);
+				}
+			}
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return prods;
+		
+	}
+	
+	public List<Prodotto> elettro() {
+		
+		List<Prodotto> prods = new ArrayList<Prodotto>();
+
+		try {
+			Connection connection = getConnection();
+			Statement statement = connection.createStatement();
+			String query = "SELECT * FROM prodotti WHERE tipo='ELETTRODOMESTICI'";
+			ResultSet resultSet = statement.executeQuery(query);
+			while(resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String nome = resultSet.getString("nome");
+				String sn = resultSet.getString("SN");
+				Double prezzo = resultSet.getDouble("prezzo");
+				String tipo = resultSet.getString("tipo");
+				String marca = resultSet.getString("marca");
+				String db = resultSet.getString("db");
+				String dl = resultSet.getString("dl");
+				String lnkimg = resultSet.getString("lnkimg");
+				int num = resultSet.getInt("num");
+				String lnk = resultSet.getString("lnk");
+				if(num!=0){
+					Prodotto prod = new Prodotto(id, nome, sn, lnkimg, prezzo, tipo, marca, db, dl, lnk, num);
+					prod.getNome();
+					prods.add(prod);
+				}
+			}
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return prods;
+		
+	}
+	
+	public List<Prodotto> foto() {
+		
+		List<Prodotto> prods = new ArrayList<Prodotto>();
+
+		try {
+			Connection connection = getConnection();
+			Statement statement = connection.createStatement();
+			String query = "SELECT * FROM prodotti WHERE tipo='FOTOCAMERE'";
+			ResultSet resultSet = statement.executeQuery(query);
+			while(resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String nome = resultSet.getString("nome");
+				String sn = resultSet.getString("SN");
+				Double prezzo = resultSet.getDouble("prezzo");
+				String tipo = resultSet.getString("tipo");
+				String marca = resultSet.getString("marca");
+				String db = resultSet.getString("db");
+				String dl = resultSet.getString("dl");
+				String lnkimg = resultSet.getString("lnkimg");
+				int num = resultSet.getInt("num");
+				String lnk = resultSet.getString("lnk");
+				if(num!=0){
+					Prodotto prod = new Prodotto(id, nome, sn, lnkimg, prezzo, tipo, marca, db, dl, lnk, num);
+					prod.getNome();
+					prods.add(prod);
+				}
+			}
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return prods;
+		
+	}
+	
+	public List<Prodotto> console() {
+		
+		List<Prodotto> prods = new ArrayList<Prodotto>();
+
+		try {
+			Connection connection = getConnection();
+			Statement statement = connection.createStatement();
+			String query = "SELECT * FROM prodotti WHERE tipo='CONSOLE'";
+			ResultSet resultSet = statement.executeQuery(query);
+			while(resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String nome = resultSet.getString("nome");
+				String sn = resultSet.getString("SN");
+				Double prezzo = resultSet.getDouble("prezzo");
+				String tipo = resultSet.getString("tipo");
+				String marca = resultSet.getString("marca");
+				String db = resultSet.getString("db");
+				String dl = resultSet.getString("dl");
+				String lnkimg = resultSet.getString("lnkimg");
+				int num = resultSet.getInt("num");
+				String lnk = resultSet.getString("lnk");
+				if(num!=0){
+					Prodotto prod = new Prodotto(id, nome, sn, lnkimg, prezzo, tipo, marca, db, dl, lnk, num);
+					prod.getNome();
+					prods.add(prod);
+				}
+			}
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return prods;
+		
+	}
 
 	public void aggiungiProdotto(String sn, String nome, String tipo, String marca, double prezzo, String desb, String desl, int pezzi, String img) {
 
