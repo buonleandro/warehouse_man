@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aggiungi Prodotto</title>
+<title>Modifica Prodotto</title>
 <link href="css/bootstrap-3.3.4.css" rel="stylesheet" type="text/css">
 <link href="css/admin.css" rel="stylesheet" type="text/css">
 </head>
@@ -14,41 +14,28 @@
 <body>
 	<header>
 		<h1 style="text-align: center">
-			<strong>AGGIUNGI PRODOTTO</strong>
+			<strong>MODIFICA PRODOTTO</strong>
 		</h1>
 	</header>
 	<div class="container-fluid">
 		<div class="row">
 			<div>
 				<div class="thumbnail">
-					<img alt="ATTENZIONE"
-						src="images/^25B261F7DE3BA212F6505F4E32392692B39B8EC8984D62E916^pimgpsh_fullsize_distr.png">
-					<div class="caption">
-						<center>
-							<form method="POST" action="UploadImage"
-								enctype="multipart/form-data">
-								Seleziona immagine da caricare: <input type="file" name="file"
-									size="60" /> <input type="submit" value="Upload" />
-								<%
-									if (session.getAttribute("file") != null) {
-								%><label>Upload completato</label>
-								<%
-									}
-								%>
-							</form>
-						</center>
-					</div>
+					<img alt="Immagine del prodotto" style="height: 265px"
+						src="<%=session.getAttribute("img")%>">
 				</div>
 			</div>
-			<form class="col-sm-12" action="AggiungiProdotto" method="GET"
+			<form class="col-sm-12" action="ModificaProdotto" method="GET"
 				enctype="multipart/form-data">
 				<center class="campi">
 					<span spellcheck="col-xs-12"><span style="font-weight: bold">Numero
 							Seriale:</span><br> <input type="text" name="SN" size="60"
-						required=""> <br> <span style="font-weight: bold">Nome
-							prodotto:</span><br> <input type="text" name="nomeprod" size="40"
-						required=""> <br> <span style="font-weight: bold">Categoria:</span><br>
-						<select name="categoria">
+						required="" value="<%=session.getAttribute("sn")%>"> <br>
+						<span style="font-weight: bold">Nome prodotto:</span><br> <input
+						type="text" name="nomeprod" size="40" required=""
+						value="<%=session.getAttribute("nome")%>"> <br> <span
+						style="font-weight: bold">Categoria (selezionare di nuovo):</span><br><strong>Categoria precedente: <%=session.getAttribute("tipo")%></strong><br><select
+						name="categoria">
 							<option value="TV">TV</option>
 							<option value="COMPUTER & TABLET">COMPUTER & TABLET</option>
 							<option value="TELEFONIA & SMARTPHONE">TELEFONIA &
@@ -57,35 +44,34 @@
 							<option value="FOTOCAMERE">FOTOCAMERE</option>
 							<option value="CONSOLE">CONSOLE</option>
 					</select> <br> <span style="font-weight: bold">Marca:</span><br> <input
-						type="text" name="marca" size="40" required=""> <br>
-						<span style="font-weight: bold">Prezzo:</span><br> <input
-						type="text" name="prezzo" size="10" value="0.0" required="">
-						<br> </span>
+						type="text" name="marca" size="40" required=""
+						value="<%=session.getAttribute("marca")%>"> <br> <span
+						style="font-weight: bold">Prezzo:</span><br> <input
+						type="text" name="prezzo" size="10" required=""
+						value="<%=session.getAttribute("prez")%>"> <br> </span>
 				</center>
 				<div>
 					<center>
 						<span style="font-weight: bold">Pezzi:</span><br> <input
-							type="number" name="pezzi" min="1" max="999" value="0"
-							required=""><br>
+							type="number" name="pezzi" min="0" max="999" required=""
+							value="<%=session.getAttribute("num")%>"><br>
 					</center>
 				</div>
-				<br>
-				<br>
-				<br>
+				<br> <br> <br>
 				<center>
 					<span class="desb" style="font-weight: bold">Descrizione
 						breve:</span><br>
 					<textarea name="desb" cols="100" rows="4" required="" class="desb"
-						style="resize: none"></textarea>
+						style="resize: none"><%=session.getAttribute("desb")%></textarea>
 					<br> <br> <span style="font-weight: bold">Descrizione
 						lunga:</span><br>
 					<textarea name="desl" rows="4" cols="100" style="resize: none"
-						required=""></textarea>
+						required=""><%=session.getAttribute("desl")%></textarea>
 					<br> <br>
 				</center>
 				<center>
 					<button style="background-color: white; border: none" type="submit">
-						<img src="images/piu.png" alt="Aggiungi" width="150" height="149" />
+						<img src="images/643368_good_512x512.png" alt="Fatto" />
 					</button>
 				</center>
 				<br> <br>
