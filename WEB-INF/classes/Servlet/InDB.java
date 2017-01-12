@@ -45,11 +45,12 @@ public class InDB extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-		out.print("<TABLE ALIGN='CENTER'>");
+		out.print("<TABLE STYLE='width:100%'>");
 		for(Prodotto p: prods) {
-			out.print("<TR ALIGN='CENTER' PADDING-BOTTOM='10px'>"+
-					" <TD PADDING-RIGHT='10px'><IMG SRC="+p.getImglnk()+" STYLE='HEIGHT: 100px'></IMG></TD>"+
+			out.print("<TR PADDING-BOTTOM='10px'>"+
+					" <TD><IMG SRC="+p.getImglnk()+" STYLE='HEIGHT: 100px'></IMG></TD>"+
 					" <TD><H3><A HREF=page.jsp"+p.getLnk()+">"+p.getNome()+"</A></H3></TD>"+
+					" <TD STYLE='PADDING-BOTTOM:10px; word-wrap:break-word;'><H4>"+p.getDb()+"</H4></TD>"+
 					"</TR>");
 		}
 		out.print("</TABLE>");
