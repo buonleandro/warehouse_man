@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>CERCA</title>
+<title>CERCA modifica</title>
 </head>
 <body>
 	<header>
@@ -14,7 +14,7 @@
 	</header>
 	<div class="container-fluid">
 		<div class="row">
-			<form class="col-sm-12" action="ricerca" method="GET"
+			<form class="col-sm-12" action="ricercamod" method="GET"
 				enctype="multipart/form-data">
 				<center>
 					<br>
@@ -26,7 +26,7 @@
 				<br> <br>
 			</form>
 			<hr>
-			<form class="col-sm-12" action="ricercanome" method="GET"
+			<form class="col-sm-12" action="ricercanomemod" method="GET"
 				enctype="multipart/form-data">
 				<center>
 					<br>NOME:<br> <input type="text" name="nacerca"
